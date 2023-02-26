@@ -2,7 +2,8 @@ package partie_pratique_1
 
 class Dictionnaire {
 
-        var Dic:MutableList<Entree> = mutableListOf()
+
+        var Dic = ArrayList<Ent>()
 
 
         fun nombresEntrées():Int{
@@ -10,13 +11,13 @@ class Dictionnaire {
 
         }
 
-        fun ajouter(e:Entree){
+        fun ajouter(e:Ent){
             if (Dic.contains(e)){
                 throw Exception("already exist")
             }else Dic.add(e)
         }
 
-        fun supprimer(e:Entree):Boolean{
+        fun supprimer(e:Ent):Boolean{
             if(Dic.contains(e)) {
                 Dic.remove(e)
                 return true
@@ -29,7 +30,7 @@ class Dictionnaire {
         fun supprimer(motAnglais:String):Boolean{
             var etat:Boolean=false
             for (di in Dic){
-                if (di.anglais==motAnglais){
+                if (di.motAnglais==motAnglais){
                     Dic.remove(di)
                     etat=true
                 }else {
@@ -42,22 +43,22 @@ class Dictionnaire {
         fun frAn(motFrancais:String): MutableList<String> {
             val motsAnglais = mutableListOf<String>()
             for (di in Dic) {
-                if (di.francais == motFrancais) {
-                    motsAnglais.add(di.anglais)
+                if (di.motFrancais == motFrancais) {
+                    motsAnglais.add(di.motAnglais)
                 }
             }
             return motsAnglais
         }
 
         fun motsFrancais(): Set<String> {
-            return Dic.map { it.francais }.toSet()
+            return Dic.map { it.motFrancais }.toSet()
         }
         fun dictionnaireFrAn():HashMap<String,ArrayList<String>>{
             val dictionnaire = HashMap<String, ArrayList<String>>()
             for (di in Dic) {
-                val motsAnglais = dictionnaire.getOrDefault(di.francais, ArrayList())
-                motsAnglais.add(di.anglais)
-                dictionnaire[di.francais] = motsAnglais
+                val motsAnglais = dictionnaire.getOrDefault(di.motFrancais, ArrayList())
+                motsAnglais.add(di.motAnglais)
+                dictionnaire[di.motFrancais] = motsAnglais
             }
 
             return dictionnaire
@@ -71,4 +72,8 @@ class Dictionnaire {
             return str.toString()
         }
     }
+
+
+
+    
 
