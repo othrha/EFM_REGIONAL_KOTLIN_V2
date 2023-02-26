@@ -1,0 +1,11 @@
+Exercice 1:
+1-vrai
+2-faux
+3-vrai
+4-faux
+5-faux
+6-faux
+Exercice 2:
+1- n'est pas rare de créer des classes dont le but principal est de contenir des données.
+2-Une classe enum peut implémenter une interface (mais elle ne peut pas dériver d'une classe).
+3-les propriétés déclarées comme ayant un type non nul doivent être initialisées dans le constructeur
